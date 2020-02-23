@@ -1,0 +1,7 @@
+{
+  "name": "onLineProject",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
