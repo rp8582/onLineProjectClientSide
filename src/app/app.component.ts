@@ -24,4 +24,10 @@ export class AppComponent {
       this.splashScreen.hide();
     });
   }
+  token() {
+    if (localStorage.getItem("user"))
+      return true;
+    return false;
+  }
+
 }

@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
+import { ConfirmTurnComponent } from '../confirm-turn/confirm-turn.component';
+import { ImmediateTurnDetailsComponent } from '../immediate-turn-details/immediate-turn-details.component';
 
 const routes: Routes = [
   {
@@ -37,22 +39,25 @@ const routes: Routes = [
           }
         ]
       },
-      {
-        path: '',
-        redirectTo: '/tabs/tab1',
-        pathMatch: 'full'
-      }
-    ]
+
+    ],
+  },
+  { path: 'immediateTurn', component: ImmediateTurnDetailsComponent },
+  {
+    path: 'confirmTurn',
+    component:ConfirmTurnComponent ,
   },
   {
     path: '',
     redirectTo: '/tabs/tab1',
     pathMatch: 'full'
-  }
+  },
+
+
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class TabsPageRoutingModule {}
+export class TabsPageRoutingModule { }

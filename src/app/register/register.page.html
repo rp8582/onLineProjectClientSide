@@ -1,0 +1,19 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>הרשם</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" >
+<ion-title>צור חשבון</ion-title>
+  <ion-item >
+    <ion-label position="floating">שם</ion-label>
+    <ion-input type="text" #name></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">מספר טלפון</ion-label>
+    <ion-input type="tel" #tel></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-button (click)="register(name.value,tel.value)"> הצטרף אלינו</ion-button>
+  </ion-item>
+</ion-content>

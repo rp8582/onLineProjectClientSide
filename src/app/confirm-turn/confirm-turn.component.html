@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      אשר את התור הרצוי
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item *ngFor="let turn of turns">
+      <ion-list>
+        <ion-item>
+          <ion-label>{{turn.BusinessName}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>{{turn.EstimatedHour}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>{{turn.Address}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-button (click)="confirmTurn(turn)">אשר תור</ion-button>
+        </ion-item>
+
+      </ion-list>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

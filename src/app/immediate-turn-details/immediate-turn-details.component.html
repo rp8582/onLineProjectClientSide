@@ -1,0 +1,44 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-title>
+            קובע תור
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-row>
+        <ion-col>
+            <ion-button size="small" shape="round" (click)="loadBusinesses()">בחר עסק</ion-button>
+        </ion-col>
+        <ion-col>
+            <ion-button size="small" shape="round" (click)="loadCategory()">תעזרו לי לבחור</ion-button>
+        </ion-col>
+    </ion-row>
+    <ion-item>
+        <ion-item *ngIf="data">
+            <ion-label>{{titleText}}</ion-label>
+            <ionic-selectable [(ngModel)]="selectedItem" [items]="data" itemValueField={{itemId}}
+                itemTextField={{itemName}} [canSearch]="true" (onChange)="dataChange($event)">
+            </ionic-selectable>
+        </ion-item>
+    </ion-item>
+    <ion-list>
+        <ion-radio-group #mode value="false">
+           
+            <ion-item>
+                <ion-label>אני ברכב</ion-label>
+                <ion-radio slot="start" value="true"></ion-radio>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>אני הולך רגל</ion-label>
+                <ion-radio slot="start" value="false"></ion-radio>
+            </ion-item>
+        </ion-radio-group>
+    </ion-list>
+    <ion-row>
+        <ion-button *ngIf="selectedItem" size="small" (click)="loadOptionalTurn(mode.value)">הבא</ion-button>
+    </ion-row>
+
+
+</ion-content>
