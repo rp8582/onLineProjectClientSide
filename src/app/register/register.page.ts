@@ -8,22 +8,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
-  apiUrl = "";
+  apiUrl = 'http://localhost:52764/api/register';
 
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
   }
 
-  register(name: string, tel: string) {
-    let user={"userName":name,"phone":tel};
-    console.log(name, tel);
-    /* this.http.get(this.apiUrl, { params: { name, tel } })
+  register(name: string, phone: string) {
+    //let user={"userName":name,"phone":tel};
+    console.log(name, phone);
+     this.http.get(this.apiUrl, { params: { name, phone } })
        .subscribe((token: string) => {
          localStorage.setItem("user", token);
          console.log(token);
-       })*/
-    localStorage.setItem("user", name);
+       })
+    
 
   }
 }

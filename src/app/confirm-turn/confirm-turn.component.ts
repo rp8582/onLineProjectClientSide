@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OptionalTurn } from '../optional-turn.service';
+import {HttpClient} from '@angular/common/http'
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-confirm-turn',
@@ -10,7 +12,7 @@ export class ConfirmTurnComponent implements OnInit {
 
   turns: any[];
 
-  constructor(private optionalTurns: OptionalTurn) { }
+  constructor(private optionalTurns: OptionalTurn, private http:HttpClient) { }
 
   ngOnInit() {
     this.turns = this.optionalTurns.optionalTurns;
@@ -19,6 +21,7 @@ export class ConfirmTurnComponent implements OnInit {
 
   confirmTurn(turn: any) {
     console.log("turn:" + turn);
+    //this.http.post(`$(environment.apiUrl)`)
   }
 
 }

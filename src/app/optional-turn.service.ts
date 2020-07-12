@@ -10,13 +10,13 @@ import { Observable } from 'rxjs';
 export class OptionalTurn  {
 
     optionalTurns: any;
-    apiUrl="http://localhost:52764/turn/turnByCategory";
+    apiUrl="http://localhost:52764/immediateTurn/immediateTurnByCategory";
     constructor(private http: HttpClient) {
 
     }
 
     loadOptionalTurns (categoryId,latitude,longitude,mode):Observable<any> {
-       return this.http.get<any>(this.apiUrl,{ params: { categoryId: categoryId, latitude: "32.109333", longitude: "34.855499", isDriving: mode } })
+       return this.http.get<any>(this.apiUrl,{ params: { categoryId: categoryId, latitude: latitude, longitude: longitude, isDriving: mode } })
         
     }
 
