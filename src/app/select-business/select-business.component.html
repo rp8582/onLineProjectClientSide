@@ -1,0 +1,8 @@
+
+<ion-item *ngIf="Businesses">
+  <ion-label>בחר עסק</ion-label>
+  <ionic-selectable [(ngModel)]="selectedBusiness" [items]="Businesses" itemValueField="BusinessId"
+      itemTextField= "BusinessName" [canSearch]="true" (onChange)="dataChange($event)">
+  </ionic-selectable>
+</ion-item>
+<app-select-service *ngIf="selectedBusiness" [data]="selectedBusiness.Services" (outputService)="loadTurnToBusiness($event,mode.value)"></app-select-service>

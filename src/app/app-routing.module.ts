@@ -9,6 +9,15 @@ const routes: Routes = [
     path: 'register',
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
   },
+  {
+    path: 'make-appointment',
+    loadChildren: () => import('./make-appointment/make-appointment.module').then( m => m.MakeAppointmentPageModule)
+  },
+  //{
+  //  path: 'select-business',
+  //  loadChildren: () => import('./select-business/select-business.module').then( m => m.SelectBusinessPageModule)
+ // },
+
   
 
     
