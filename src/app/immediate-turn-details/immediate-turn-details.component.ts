@@ -1,18 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { IonicSelectableComponent } from 'ionic-selectable';
 import { HttpClient } from '@angular/common/http';
-import { OptionalTurn } from '../optional-turn.service';
 import { Router } from '@angular/router';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../environments/environment';
 import { Observable, of } from 'rxjs';
+import { OptionalTurns } from '../optional-turns.service';
+import { OptionalTurn } from '../optional-turn.service';
 
 @Component({
   selector: 'app-immediate-turn-details',
   templateUrl: './immediate-turn-details.component.html',
   styleUrls: ['./immediate-turn-details.component.scss'],
 })
-export class ImmediateTurnDetailsComponent implements OnInit {
-
+export class ImmediateTurnDetailsComponent {
 
   data: any[];
   selectedItem: any;
@@ -21,20 +21,13 @@ export class ImmediateTurnDetailsComponent implements OnInit {
   itemName: string;
   latitude: any;
   longitude: any;
+  apiUri = '';
 
-  apiUrl = '/api/category';
-
-  constructor(private http: HttpClient, private optionalTurns: OptionalTurn, private router: Router) {
-
-  }
-
-  ngOnInit() {
-
-
-  }
+  constructor(private http: HttpClient, private optionalTurns: OptionalTurns, private optionalTurn: OptionalTurn, private router: Router) { }
 
   loadCategory() {
-    this.http.get(environment.apiUrl + this.apiUrl).subscribe((categories: any[]) => {
+    this.apiUri = "/category";
+    this.http.get(environment.apiUrl + this.apiUri).subscribe((categories: any[]) => {
       this.data = categories;
       console.log('categories', this.data);
       this.titleText = "בחר קטגוריה";
@@ -43,48 +36,57 @@ export class ImmediateTurnDetailsComponent implements OnInit {
     })
   }
 
-  loadBusinesses() { }
+  loadBusinesses() {
+    this.apiUri = "/business"
+    this.http.get(environment.apiUrl + this.apiUri).subscribe((businesses: any[]) => {
+      this.data = businesses;
+      console.log('businesses', this.data);
+      this.titleText = "בחר עסק";
+      this.itemId = "BusinessId";
+      this.itemName = "BusinessName";
+    });
+  }
+
 
   dataChange(event: {
     component: IonicSelectableComponent,
     value: any
   }) {
-    //this.category=event.value;
     console.log('category:', this.selectedItem);
   }
 
-
-  getUserLocation(): Observable<any> {
-    // get Users current position
-
-    if (navigator.geolocation) {
-      var positionOption = { enableHighAccuracy: false, maximumAge: Infinity, timeout: 600000 };
+  getUserLocation(): Promise<any> {
+    return new Promise((resolve, reject) => {
       navigator.geolocation.getCurrentPosition(position => {
-        debugger;
-        this.latitude = position.coords.latitude;
-        this.longitude = position.coords.longitude;
         console.log("position", position);
-        return of(positionOption);
+        resolve({ lng: position.coords.longitude, lat: position.coords.latitude });
       },
         err => {
-          console.log(err);
-        },
-        positionOption);
-
-    }
-    return null;
+          reject(err);
+        });
+    });
   }
 
-  loadOptionalTurn(mode: any) {
+  loadTurnToBusiness(selectedService: any,mode:any) {
+    this.getUserLocation().then((position => {
+      this.optionalTurn.loadOptionalTurn(selectedService.ServiceId, position.lat, position.lng, mode).subscribe(
+        (turn => {
+          this.optionalTurn.optionalTurn = turn;
+          this.router.navigate(['/confirmTurn']);
+        }));
+    }))
+  }
 
-    this.getUserLocation().subscribe((position => {
 
-      debugger;
-      this.optionalTurns.loadOptionalTurns(this.selectedItem.CategoryId, this.latitude, this.longitude, mode).subscribe(
+  loadOptionalTurn(mode) {
+    this.getUserLocation().then((position => {
+
+      this.optionalTurns.loadOptionalTurns(this.selectedItem.CategoryId, position.lat, position.lng, mode).subscribe(
         (turns => {
           this.optionalTurns.optionalTurns = turns;
           this.router.navigate(['/confirmTurn']);
         }));
     }))
   }
+
 }

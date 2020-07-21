@@ -7,6 +7,7 @@ import { TabsPage } from './tabs.page';
 import { ConfirmTurnComponent } from '../confirm-turn/confirm-turn.component';
 import { ImmediateTurnDetailsComponent } from '../immediate-turn-details/immediate-turn-details.component';
 import { IonicSelectableModule } from 'ionic-selectable';
+import {SelectServiceComponent} from '../select-service/select-service.component';
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ import { IonicSelectableModule } from 'ionic-selectable';
     TabsPage,
     ConfirmTurnComponent,
     ImmediateTurnDetailsComponent,
+    SelectServiceComponent,
 
   ]
 })

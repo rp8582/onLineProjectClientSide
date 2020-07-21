@@ -32,7 +32,9 @@ import { TokenInterceptor } from './auth.interceptor';
     SplashScreen,
     HttpClientModule,
 
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
+
   ],
   bootstrap: [AppComponent]
 })

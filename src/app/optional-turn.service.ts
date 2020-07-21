@@ -1,23 +1,24 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
     providedIn: 'root'
-  })
+})
 
-export class OptionalTurn  {
+export class OptionalTurn {
 
-    optionalTurns: any;
-    apiUrl="http://localhost:52764/immediateTurn/immediateTurnByCategory";
-    constructor(private http: HttpClient) {
+    apiUri = "/immediateTurnByBusiness";
+    optionalTurn: any;
+    constructor(private http: HttpClient) { }
 
+    loadOptionalTurn(serviceId, latitude, longitude, mode): Observable<any> {
+        latitude = 32.109333;
+        longitude = 34.855499;
+        console.log(mode);
+        return this.http.get<any>(environment.apiUrl + this.apiUri+'/'+serviceId,
+            { params: {  latitude: latitude, longitude: longitude, isDriving: mode } })
     }
-
-    loadOptionalTurns (categoryId,latitude,longitude,mode):Observable<any> {
-       return this.http.get<any>(this.apiUrl,{ params: { categoryId: categoryId, latitude: latitude, longitude: longitude, isDriving: mode } })
-        
-    }
-
 }
