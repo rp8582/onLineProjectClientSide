@@ -9,6 +9,10 @@ const routes: Routes = [
     path: 'register',
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
   },
+  {
+    path: 'process-complete',
+    loadChildren: () => import('./process-complete/process-complete.module').then( m => m.ProcessCompletePageModule)
+  },
   
 
     

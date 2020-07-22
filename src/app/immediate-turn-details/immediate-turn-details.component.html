@@ -40,5 +40,5 @@
         <ion-button *ngIf="apiUri == '/category'&&selectedItem" size="small" (click)="loadOptionalTurn(mode.value)">הבא</ion-button>
     </ion-row>
 
-    <app-select-service *ngIf="selectedItem" [data]="selectedItem.Services" (outputService)="loadTurnToBusiness($event,mode.value)"></app-select-service>
+    <app-select-service *ngIf="apiUri != '/category'&&selectedItem" [data]="selectedItem.Services" (outputService)="loadTurnToBusiness($event,mode.value)"></app-select-service>
 </ion-content>
