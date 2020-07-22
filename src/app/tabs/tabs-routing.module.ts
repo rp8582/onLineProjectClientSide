@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
 import { ConfirmTurnComponent } from '../confirm-turn/confirm-turn.component';
 import { ImmediateTurnDetailsComponent } from '../immediate-turn-details/immediate-turn-details.component';
+import {MakeAppointmentPage} from '../make-appointment/make-appointment.page';
 
 const routes: Routes = [
   {
@@ -43,6 +44,7 @@ const routes: Routes = [
     ],
   },
   { path: 'immediateTurn', component: ImmediateTurnDetailsComponent },
+  { path: 'makeAppointment', component: MakeAppointmentPage },
   {
     path: 'confirmTurn',
     component:ConfirmTurnComponent ,

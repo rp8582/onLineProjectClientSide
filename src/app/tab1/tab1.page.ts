@@ -15,5 +15,7 @@ export class Tab1Page {
     this.router.navigate(['immediateTurn']);
   }
   MakeAppointment()
-  {}
+  {
+    this.router.navigate(['makeAppointment']);
+  }
 }

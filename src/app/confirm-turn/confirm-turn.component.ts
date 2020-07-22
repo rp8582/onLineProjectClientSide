@@ -30,7 +30,7 @@ export class ConfirmTurnComponent implements OnInit {
     console.log("turn:" + turn);
     this.http.post(environment.apiUrl + this.apiUri, { TurnId: turn.TurnId, PreAlert: this.preAlert })
       .subscribe((verificationCode => {
-        this.router.navigate(['/processComplete']);
+        this.router.navigate(['/process-complete']);
         console.log(verificationCode);
         this.optionalTurn.verificationCode=verificationCode;
       }))

@@ -8,6 +8,8 @@ import { ConfirmTurnComponent } from '../confirm-turn/confirm-turn.component';
 import { ImmediateTurnDetailsComponent } from '../immediate-turn-details/immediate-turn-details.component';
 import { IonicSelectableModule } from 'ionic-selectable';
 import {SelectServiceComponent} from '../select-service/select-service.component';
+import {MakeAppointmentPage} from '../make-appointment/make-appointment.page';
+import {SelectBusinessComponent} from '../select-business/select-business.component';
 
 @NgModule({
   imports: [
@@ -22,7 +24,8 @@ import {SelectServiceComponent} from '../select-service/select-service.component
     ConfirmTurnComponent,
     ImmediateTurnDetailsComponent,
     SelectServiceComponent,
-
+    MakeAppointmentPage,
+    SelectBusinessComponent
   ]
 })
 export class TabsPageModule { }
