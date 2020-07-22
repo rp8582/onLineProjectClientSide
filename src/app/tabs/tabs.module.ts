@@ -10,6 +10,8 @@ import { IonicSelectableModule } from 'ionic-selectable';
 import {SelectServiceComponent} from '../select-service/select-service.component';
 import {MakeAppointmentPage} from '../make-appointment/make-appointment.page';
 import {SelectBusinessComponent} from '../select-business/select-business.component';
+import {SelectCategoryComponent} from '../select-category/select-category.component'
+
 
 @NgModule({
   imports: [
@@ -25,7 +27,8 @@ import {SelectBusinessComponent} from '../select-business/select-business.compon
     ImmediateTurnDetailsComponent,
     SelectServiceComponent,
     MakeAppointmentPage,
-    SelectBusinessComponent
+    SelectBusinessComponent,
+    SelectCategoryComponent
   ]
 })
 export class TabsPageModule { }

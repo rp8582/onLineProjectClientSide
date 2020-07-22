@@ -14,14 +14,8 @@
             <ion-button size="small" shape="round" (click)="loadCategory()">תעזרו לי לבחור</ion-button>
         </ion-col>
     </ion-row>
-    <ion-item>
-        <ion-item *ngIf="data">
-            <ion-label>{{titleText}}</ion-label>
-            <ionic-selectable [(ngModel)]="selectedItem" [items]="data" itemValueField={{itemId}}
-                itemTextField={{itemName}} [canSearch]="true" (onChange)="dataChange($event)">
-            </ionic-selectable>
-        </ion-item>
-    </ion-item>
+    <app-select-business *ngIf="isCategory==0" (outputService)="setSelectedService($event)"></app-select-business>
+    <app-select-category *ngIf="isCategory==1" (outputCategory)="setSelectedCategory($event)"></app-select-category>
     <ion-list>
         <ion-radio-group #mode value="false">
 
@@ -37,10 +31,10 @@
         </ion-radio-group>
     </ion-list>
     <ion-row>
-        <ion-button *ngIf="apiUri == '/category'&&selectedItem" size="small" (click)="loadOptionalTurn(mode.value)">הבא
+        <ion-button *ngIf="selectedCategory" size="small" (click)="loadOptionalTurn(mode.value)">הבא
         </ion-button>
-    </ion-row>
+        <ion-button *ngIf="selectedService" size="small" (click)="loadTurnToBusiness(mode.value)">הבא
+        </ion-button>
 
-    <app-select-service *ngIf="selectedItem" [data]="selectedItem.Services"
-        (outputService)="loadTurnToBusiness($event,mode.value)"></app-select-service>
+    </ion-row>
 </ion-content>

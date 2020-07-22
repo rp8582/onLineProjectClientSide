@@ -13,35 +13,27 @@ import { OptionalTurn } from '../optional-turn.service';
   styleUrls: ['./immediate-turn-details.component.scss'],
 })
 export class ImmediateTurnDetailsComponent {
-
-  data: any[];
-  selectedItem: any;
-  titleText: string;
-  itemId: string;
-  itemName: string;
+  selectedCategory: any;
+  selectedService: any;
+  isCategory: any;
   latitude: any;
   longitude: any;
   apiUri = '';
 
   constructor(private http: HttpClient, private optionalTurns: OptionalTurns, private optionalTurn: OptionalTurn, private router: Router) { }
-
-  loadCategory() {
-    this.apiUri = "/category";
-    this.http.get(environment.apiUrl + this.apiUri).subscribe((categories: any[]) => {
-      this.data = categories;
-      console.log('categories', this.data);
-      this.titleText = "בחר קטגוריה";
-      this.itemId = "CategoryId";
-      this.itemName = "CategoryName";
-    })
+  loadBusinesses() {
+    this.isCategory = 0;
   }
-
-
-  dataChange(event: {
-    component: IonicSelectableComponent,
-    value: any
-  }) {
-    console.log('category:', this.selectedItem);
+  loadCategory() {
+    this.isCategory = 1;
+  }
+  setSelectedService(service) {
+    this.selectedService = service;
+    console.log('setService',this.selectedService)
+  }
+  setSelectedCategory(category) {
+    this.selectedCategory = category;
+    console.log('setCategory',this.selectedCategory)
   }
 
   getUserLocation(): Promise<any> {
@@ -56,9 +48,9 @@ export class ImmediateTurnDetailsComponent {
     });
   }
 
-  loadTurnToBusiness(selectedService: any,mode:any) {
+  loadTurnToBusiness( mode: any) {
     this.getUserLocation().then((position => {
-      this.optionalTurn.loadOptionalTurn(selectedService.ServiceId, position.lat, position.lng, mode).subscribe(
+      this.optionalTurn.loadOptionalTurn(this.selectedService.ServiceId, position.lat, position.lng, mode).subscribe(
         (turn => {
           this.optionalTurn.optionalTurn = turn;
           this.router.navigate(['/confirmTurn']);
@@ -70,7 +62,7 @@ export class ImmediateTurnDetailsComponent {
   loadOptionalTurn(mode) {
     this.getUserLocation().then((position => {
 
-      this.optionalTurns.loadOptionalTurns(this.selectedItem.CategoryId, position.lat, position.lng, mode).subscribe(
+      this.optionalTurns.loadOptionalTurns(this.selectedCategory.CategoryId, position.lat, position.lng, mode).subscribe(
         (turns => {
           this.optionalTurns.optionalTurns = turns;
           this.router.navigate(['/confirmTurn']);
