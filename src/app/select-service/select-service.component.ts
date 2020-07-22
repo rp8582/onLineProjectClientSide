@@ -28,7 +28,7 @@ export class SelectServiceComponent implements OnInit {
     console.log('service:', this.selectedItem);
   }
 
-  loadOptionalTurn() {
+  emitService() {
     console.log("selectedItem:", this.selectedItem);
     this.outputService.emit(this.selectedItem);
   }

@@ -5,4 +5,10 @@
       itemTextField= "BusinessName" [canSearch]="true" (onChange)="dataChange($event)">
   </ionic-selectable>
 </ion-item>
-<app-select-service *ngIf="selectedBusiness" [data]="selectedBusiness.Services" (outputService)="loadTurnToBusiness($event,mode.value)"></app-select-service>
+<ion-item *ngIf="selectedBusiness">
+<ion-list *ngIf="selectedBusiness.Services.length>1" >
+    <ion-item  *ngFor="let service of selectedBusiness.Services" button (click)="buttonClick(service)">
+      {{service.ServiceName}}
+    </ion-item>
+</ion-list>
+</ion-item>

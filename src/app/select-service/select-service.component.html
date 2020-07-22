@@ -3,6 +3,6 @@
     [canSearch]="true" (onChange)="dataChange($event)">
   </ionic-selectable>
   <ion-row>
-    <ion-button *ngIf="selectedItem" size="small" (click)="loadOptionalTurn()">הבא</ion-button>
+    <ion-button *ngIf="selectedItem" size="small" (click)="emitService()">הבא</ion-button>
   </ion-row>
 </ion-content>

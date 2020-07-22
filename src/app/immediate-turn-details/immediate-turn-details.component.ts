@@ -36,17 +36,6 @@ export class ImmediateTurnDetailsComponent {
     })
   }
 
-  loadBusinesses() {
-    this.apiUri = "/business"
-    this.http.get(environment.apiUrl + this.apiUri).subscribe((businesses: any[]) => {
-      this.data = businesses;
-      console.log('businesses', this.data);
-      this.titleText = "בחר עסק";
-      this.itemId = "BusinessId";
-      this.itemName = "BusinessName";
-    });
-  }
-
 
   dataChange(event: {
     component: IonicSelectableComponent,

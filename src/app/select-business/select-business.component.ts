@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { IonicSelectableComponent } from 'ionic-selectable';
+
 
 @Component({
   selector: 'app-select-business',
@@ -10,6 +11,7 @@ import { IonicSelectableComponent } from 'ionic-selectable';
 })
 
 export class SelectBusinessComponent implements OnInit {
+  @Output() outputService = new EventEmitter<any>();
   Businesses: any[];
   selectedBusiness: any;
   apiUri = '';
@@ -34,5 +36,12 @@ export class SelectBusinessComponent implements OnInit {
   }) {
     console.log('selectedBusiness:', this.selectedBusiness);
   }
-
+  emitService()
+  {
+    
+  }
+  buttonClick(selectedService:any)
+  {
+   this.outputService.emit(selectedService);
+  }
 }
