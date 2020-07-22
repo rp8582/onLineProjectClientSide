@@ -10,8 +10,10 @@ import { environment } from 'src/environments/environment';
 
 export class OptionalTurns {
 
-  apiUri = "/immediateTurnByCategory";
+  apiUri = "/immediateTurn";
   optionalTurns: any;
+  verificationCode:any;
+
   constructor(private http: HttpClient) { }
 
   loadOptionalTurns(categoryId, latitude, longitude, mode): Observable<any> {
