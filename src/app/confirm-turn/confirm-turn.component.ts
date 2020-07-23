@@ -25,7 +25,7 @@ export class ConfirmTurnComponent implements OnInit {
     this.turns = this.optionalTurns.optionalTurns;
     console.log("turns", this.turns);
     console.log("turn", this.turn);
-    if (this.turn.EstimatedHour == "00:00:00")
+    if (this.turn.EstimatedHour == "00:00:00"||this.turns.length==0)
       this.router.navigate(['/no-turns'])
   }
 

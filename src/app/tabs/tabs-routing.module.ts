@@ -4,6 +4,7 @@ import { TabsPage } from './tabs.page';
 import { ConfirmTurnComponent } from '../confirm-turn/confirm-turn.component';
 import { ImmediateTurnDetailsComponent } from '../immediate-turn-details/immediate-turn-details.component';
 import { NoTurnsComponent } from '../no-turns/no-turns.component';
+
 const routes: Routes = [
   {
     path: 'tabs',
@@ -39,7 +40,7 @@ const routes: Routes = [
           }
         ]
       },
-
+      
     ],
   },
   { path: 'immediateTurn', component: ImmediateTurnDetailsComponent },
