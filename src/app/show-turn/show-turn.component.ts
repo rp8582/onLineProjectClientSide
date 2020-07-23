@@ -19,11 +19,9 @@ export class ShowTurnComponent implements OnInit {
 
   loadTurns() {
     this.http.get(environment.apiUrl + this.apiUri).subscribe((turns: any[]) => {
-
       this.myTurns = turns;
       console.log('turns:', this.myTurns);
     })
-
   }
 
   cancelTurn(turnId: any) {

@@ -13,7 +13,7 @@ export class SelectCategoryComponent implements OnInit {
   @Output() outputCategory = new EventEmitter<any>();
   categories: any[];
   selectedCategory: any;
-  apiUri = '';
+  apiUri = '/categories';
 
   constructor(private http: HttpClient) { }
 
@@ -22,7 +22,6 @@ export class SelectCategoryComponent implements OnInit {
   }
 
   loadCategories() {
-    this.apiUri = "/category";
     this.http.get(environment.apiUrl + this.apiUri).subscribe((categories: any[]) => {
       this.categories = categories;
       console.log('categories', this.categories);  

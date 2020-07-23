@@ -7,47 +7,30 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+
+  <ion-item *ngIf="turn||turns">
+    <p>בחר זמן להתראה מראש</p>
+    <ion-input type="number" [(ngModel)]="preAlert"></ion-input>
+  </ion-item>
+
   <ion-list *ngIf="turns">
     <ion-item *ngFor="let turn of turns">
-      <ion-list>
-        <ion-item>
-          <ion-label>{{turn.BusinessName}}</ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-label>{{turn.EstimatedHour}}</ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-label>{{turn.Address}}</ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-button *ngIf="preAlert" (click)="confirmTurn(turn)">אשר תור</ion-button>
-        </ion-item>
-      </ion-list>
+      <ion-text>
+        <p>{{turn.BusinessName}}</p>
+        <p>{{turn.EstimatedHour}}</p>
+        <p>{{turn.Address}}</p>
+        <ion-button *ngIf="preAlert" (click)="confirmTurn(turn)">אשר תור</ion-button>
+      </ion-text>
     </ion-item>
   </ion-list>
 
   <ion-item *ngIf="turn">
-    <ion-list>
-      <ion-item>
-        <ion-label>{{turn.BusinessName}}</ion-label>
-      </ion-item>
-      <ion-item>
-        <ion-label>{{turn.EstimatedHour}}</ion-label>
-      </ion-item>
-      <ion-item>
-        <ion-label>{{turn.Address}}</ion-label>
-      </ion-item>
-      <ion-item>
-        <ion-button *ngIf="preAlert" (click)="confirmTurn(turn)">אשר תור</ion-button>
-      </ion-item>
-    </ion-list>
-  </ion-item>
-
-  <ion-item>
-    <ion-label>בחר זמן להתראה מראש</ion-label>
-  </ion-item>
-  <ion-item>
-    <ion-input type="number" [(ngModel)]="preAlert"></ion-input>
+    <ion-text>
+      <p>{{turn.BusinessName}}</p>
+      <p>{{turn.EstimatedHour}}</p>
+      <p>{{turn.Address}}</p>
+      <ion-button *ngIf="preAlert" (click)="confirmTurn(turn)">אשר תור</ion-button>
+    </ion-text>
   </ion-item>
 
 </ion-content>

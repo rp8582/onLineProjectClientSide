@@ -3,8 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
 import { ConfirmTurnComponent } from '../confirm-turn/confirm-turn.component';
 import { ImmediateTurnDetailsComponent } from '../immediate-turn-details/immediate-turn-details.component';
-import {MakeAppointmentPage} from '../make-appointment/make-appointment.page';
-
+import { NoTurnsComponent } from '../no-turns/no-turns.component';
 const routes: Routes = [
   {
     path: 'tabs',
@@ -44,11 +43,9 @@ const routes: Routes = [
     ],
   },
   { path: 'immediateTurn', component: ImmediateTurnDetailsComponent },
-  { path: 'makeAppointment', component: MakeAppointmentPage },
-  {
-    path: 'confirmTurn',
-    component:ConfirmTurnComponent ,
-  },
+  { path: 'confirmTurn', component: ConfirmTurnComponent },
+  { path: 'no-turns', component: NoTurnsComponent },
+
   {
     path: '',
     redirectTo: '/tabs/tab1',
