@@ -5,5 +5,25 @@
 </ion-header>
 
 <ion-content>
-<app-select-business (outputService)="SetSelectedService($event)"></app-select-business>
+  <app-select-business (outputService)="SetSelectedService($event)"></app-select-business>
+  <ion-grid *ngIf="selectedService&&days">בחר יום
+    <ion-row class="overflow-x">
+      <ion-col *ngFor="let day of days"><button (click)="loadHours(day)"> {{day}}</button></ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-list *ngIf="hours">
+    <ion-item *ngFor="let hour of hours" button (click)="setHour(hour)"> {{hour}}</ion-item>
+  </ion-list>
+
+
+
+  <ion-item *ngIf="selectedHour">
+    <ion-label>בחר זמן להתראה מראש</ion-label>
+    <ion-input type="number" [(ngModel)]="preAlert"></ion-input>
+  </ion-item>
+
+  <ion-button *ngIf="preAlert" (click)="confirmTurn()">אשר תור</ion-button>
+
 </ion-content>
+<!--todo: לבדוק שמוצעים רק שירותים שיש להם הרשאה לתור מראש
+לאחר בחירה איבר שכל הרשימה תעלם-איך עושים-->
