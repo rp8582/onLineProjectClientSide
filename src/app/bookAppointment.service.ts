@@ -23,7 +23,7 @@ export class BookAppointment {
             { params: { serviceId: serviceId, day: day } })
     }
     makeAppointment(turn): Observable<any> {
-        debugger;
+       
         return this.http.post<any>("http://localhost:52764/appointment/ConfirmTurn", turn)
     }
 }
