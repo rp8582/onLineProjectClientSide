@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BookAppointment } from '../bookAppointment.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-make-appointment',
@@ -14,7 +15,7 @@ export class MakeAppointmentPage implements OnInit {
   selectedHour: any;
   preAlert: number;
 
-  constructor(private appointmentService: BookAppointment) { }
+  constructor(private appointmentService: BookAppointment,private router:Router) { }
 
   ngOnInit() { }
 
@@ -40,13 +41,16 @@ export class MakeAppointmentPage implements OnInit {
     var date: Date;
     date = new Date(this.selectedDay+" "+this.selectedHour);
     console.log("date",date);
-   
-    //date.setDate(date.getDate() + (this.selectedDay - date.getDate()));
     
     this.appointmentService.makeAppointment
-    ({ PreAlert: this.preAlert, ServiceId: this.selectedService.ServiceId, EstimatedHour:this.selectedDay+" "+this.selectedHour}).subscribe(
-      (state=>console.log(state))
-    )
+    ({ PreAlert: this.preAlert, ServiceId: this.selectedService.ServiceId, EstimatedHour:this.selectedDay+" "+this.selectedHour})
+      .subscribe((verificationCode => {
+         console.log(verificationCode);
+        this.appointmentService.verificationCode = verificationCode;
+        this.router.navigate(['/process-complete']);
+       
+      }))
+    
   }
   segmentChanged(ev: any) {
     //console.log('Segment1', ev.detial.value);

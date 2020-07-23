@@ -12,6 +12,7 @@ export class BookAppointment {
 
     apiUri = "/immediateTurn";
     days: any;
+    verificationCode:any;
     constructor(private http: HttpClient) { }
 
     loadDays(serviceId): Observable<any> {
