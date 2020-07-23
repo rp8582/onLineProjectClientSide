@@ -7,7 +7,7 @@
 </ion-item>
 <ion-item *ngIf="selectedBusiness">
 <ion-list *ngIf="selectedBusiness.Services.length>1" >
-    <ion-item  *ngFor="let service of selectedBusiness.Services" button (click)="buttonClick(service)">
+    <ion-item  *ngFor="let service of selectedBusiness.Services" button (click)="buttonClick(service)" detail="false">
       {{service.ServiceName}}
     </ion-item>
 </ion-list>
