@@ -12,25 +12,31 @@ import { OptionalTurn } from '../optional-turn.service';
   templateUrl: './immediate-turn-details.component.html',
   styleUrls: ['./immediate-turn-details.component.scss'],
 })
+
 export class ImmediateTurnDetailsComponent {
+
   selectedCategory: any;
   selectedService: any;
   isCategory: any;
   latitude: any;
   longitude: any;
-  apiUri = '';
+  //apiUri = '';
 
   constructor(private http: HttpClient, private optionalTurns: OptionalTurns, private optionalTurn: OptionalTurn, private router: Router) { }
+  
   loadBusinesses() {
     this.isCategory = 0;
   }
+
   loadCategory() {
     this.isCategory = 1;
   }
+
   setSelectedService(service) {
     this.selectedService = service;
     console.log('setService',this.selectedService)
   }
+
   setSelectedCategory(category) {
     this.selectedCategory = category;
     console.log('setCategory',this.selectedCategory)
@@ -61,7 +67,6 @@ export class ImmediateTurnDetailsComponent {
 
   loadOptionalTurn(mode) {
     this.getUserLocation().then((position => {
-
       this.optionalTurns.loadOptionalTurns(this.selectedCategory.CategoryId, position.lat, position.lng, mode).subscribe(
         (turns => {
           this.optionalTurns.optionalTurns = turns;

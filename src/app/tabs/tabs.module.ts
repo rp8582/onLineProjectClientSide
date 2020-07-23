@@ -7,11 +7,10 @@ import { TabsPage } from './tabs.page';
 import { ConfirmTurnComponent } from '../confirm-turn/confirm-turn.component';
 import { ImmediateTurnDetailsComponent } from '../immediate-turn-details/immediate-turn-details.component';
 import { IonicSelectableModule } from 'ionic-selectable';
-import {SelectServiceComponent} from '../select-service/select-service.component';
-import {MakeAppointmentPage} from '../make-appointment/make-appointment.page';
-import {SelectBusinessComponent} from '../select-business/select-business.component';
-import {SelectCategoryComponent} from '../select-category/select-category.component'
-
+import { SelectServiceComponent} from '../select-service/select-service.component';
+import { SelectBusinessComponent } from '../select-business/select-business.component';
+import { SelectCategoryComponent } from '../select-category/select-category.component';
+import { NoTurnsComponent } from '../no-turns/no-turns.component';
 
 @NgModule({
   imports: [
@@ -26,9 +25,9 @@ import {SelectCategoryComponent} from '../select-category/select-category.compon
     ConfirmTurnComponent,
     ImmediateTurnDetailsComponent,
     SelectServiceComponent,
-    MakeAppointmentPage,
     SelectBusinessComponent,
-    SelectCategoryComponent
+    SelectCategoryComponent,
+    NoTurnsComponent
   ]
 })
 export class TabsPageModule { }

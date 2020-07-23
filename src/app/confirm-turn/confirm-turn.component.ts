@@ -10,8 +10,10 @@ import { Router } from '@angular/router';
   templateUrl: './confirm-turn.component.html',
   styleUrls: ['./confirm-turn.component.scss'],
 })
+
 export class ConfirmTurnComponent implements OnInit {
-  apiUri = "/ImmediateTurn"
+
+  apiUri = "/ImmediateTurns"
   turns: any[];
   turn: any;
   preAlert: number;
@@ -23,6 +25,8 @@ export class ConfirmTurnComponent implements OnInit {
     this.turns = this.optionalTurns.optionalTurns;
     console.log("turns", this.turns);
     console.log("turn", this.turn);
+    if (this.turn.EstimatedHour == "00:00:00")
+      this.router.navigate(['/no-turns'])
   }
 
   confirmTurn(turn: any) {
@@ -32,7 +36,7 @@ export class ConfirmTurnComponent implements OnInit {
       .subscribe((verificationCode => {
         this.router.navigate(['/process-complete']);
         console.log(verificationCode);
-        this.optionalTurn.verificationCode=verificationCode;
+        this.optionalTurn.verificationCode = verificationCode;
       }))
   }
 

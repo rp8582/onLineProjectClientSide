@@ -15,6 +15,6 @@ import { MakeAppointmentPage } from './make-appointment.page';
     IonicModule,
     MakeAppointmentPageRoutingModule
   ],
-  declarations: [MakeAppointmentPage]
+  declarations: [MakeAppointmentPage,]
 })
 export class MakeAppointmentPageModule {}
