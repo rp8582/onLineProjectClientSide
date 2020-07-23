@@ -11,14 +11,15 @@ import { SelectServiceComponent} from '../select-service/select-service.componen
 import { SelectBusinessComponent } from '../select-business/select-business.component';
 import { SelectCategoryComponent } from '../select-category/select-category.component';
 import { NoTurnsComponent } from '../no-turns/no-turns.component';
-
+import {MakeAppointmentPage} from '../make-appointment/make-appointment.page';
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
     FormsModule,
     TabsPageRoutingModule,
-    IonicSelectableModule
+    IonicSelectableModule,
+    
   ],
   declarations: [
     TabsPage,
@@ -27,7 +28,8 @@ import { NoTurnsComponent } from '../no-turns/no-turns.component';
     SelectServiceComponent,
     SelectBusinessComponent,
     SelectCategoryComponent,
-    NoTurnsComponent
+    NoTurnsComponent,
+    MakeAppointmentPage
   ]
 })
 export class TabsPageModule { }
