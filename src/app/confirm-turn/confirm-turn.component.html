@@ -9,8 +9,9 @@
 <ion-content [fullscreen]="true">
 
   <ion-item *ngIf="turn||turns">
-    <p>בחר זמן להתראה מראש</p>
+    <p> בחר זמן להתראה מראש: </p>
     <ion-input type="number" [(ngModel)]="preAlert"></ion-input>
+    <p>דקות </p>
   </ion-item>
 
   <ion-list *ngIf="turns">
