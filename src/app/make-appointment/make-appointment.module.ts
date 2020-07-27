@@ -18,10 +18,6 @@ import { MakeAppointmentPage } from './make-appointment.page';
     IonicModule,
     MakeAppointmentPageRoutingModule
   ],
-    
- 
-  declarations: [MakeAppointmentPage,
-    //SelectBusinessComponent
-  ]
+  declarations: [MakeAppointmentPage]
 })
 export class MakeAppointmentPageModule {}

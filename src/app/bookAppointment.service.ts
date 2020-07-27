@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
 
 export class BookAppointment {
 
-    apiUri = "/immediateTurn";
+   // apiUri = "/immediateTurn";
     days: any;
     verificationCode:any;
     constructor(private http: HttpClient) { }
@@ -19,10 +19,12 @@ export class BookAppointment {
         return this.http.get<any>("http://localhost:52764/appointment/optionalDays",
             { params: { serviceId: serviceId } })
     }
+
     loadHoursPerDay(serviceId, day): Observable<any> {
         return this.http.get<any>("http://localhost:52764/appointment/optionalHours",
             { params: { serviceId: serviceId, day: day } })
     }
+
     makeAppointment(turn): Observable<any> {
        
         return this.http.post<any>("http://localhost:52764/appointment/ConfirmTurn", turn)

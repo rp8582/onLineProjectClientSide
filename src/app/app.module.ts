@@ -11,9 +11,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { IonicSelectableModule } from 'ionic-selectable';
 import { RegisterPage } from './register/register.page';
 import { TokenInterceptor } from './auth.interceptor';
-//import { SelectBusinessComponent } from './select-business/select-business.component';
 
-
+import { SelectBusinessComponent } from './select-business/select-business.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +26,6 @@ import { TokenInterceptor } from './auth.interceptor';
     AppRoutingModule,
     HttpClientModule,
     IonicSelectableModule,
-
   ],
   providers: [
 

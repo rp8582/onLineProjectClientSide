@@ -23,7 +23,7 @@ export class ImmediateTurnDetailsComponent {
   //apiUri = '';
 
   constructor(private http: HttpClient, private optionalTurns: OptionalTurns, private optionalTurn: OptionalTurn, private router: Router) { }
-  
+
   loadBusinesses() {
     this.isCategory = 0;
   }
@@ -34,12 +34,13 @@ export class ImmediateTurnDetailsComponent {
 
   setSelectedService(service) {
     this.selectedService = service;
-    console.log('setService',this.selectedService)
+    console.log('setService', this.selectedService)
+
   }
 
   setSelectedCategory(category) {
     this.selectedCategory = category;
-    console.log('setCategory',this.selectedCategory)
+    console.log('setCategory', this.selectedCategory)
   }
 
   getUserLocation(): Promise<any> {
@@ -50,18 +51,22 @@ export class ImmediateTurnDetailsComponent {
       },
         err => {
           reject(err);
+          
         });
     });
   }
 
-  loadTurnToBusiness( mode: any) {
+  loadTurnToBusiness(mode: any) {
     this.getUserLocation().then((position => {
       this.optionalTurn.loadOptionalTurn(this.selectedService.ServiceId, position.lat, position.lng, mode).subscribe(
         (turn => {
           this.optionalTurn.optionalTurn = turn;
           this.router.navigate(['/confirmTurn']);
         }));
-    }))
+    })
+    )
+   
+
   }
 
 

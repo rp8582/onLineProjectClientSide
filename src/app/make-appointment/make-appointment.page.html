@@ -8,7 +8,9 @@
   <app-select-business (outputService)="SetSelectedService($event)"></app-select-business>
   <!--ion-grid *ngIf="selectedService&&days">בחר יום
     <ion-row class="overflow-x">
-      <ion-col *ngFor="let day of days"><button (click)="loadHours(day)"> {{day|date:'shortDate'}}</button></ion-col>
+      <ion-col *ngFor="let day of days">
+        <button (click)="loadHours(day)"> {{day}}</button>
+      </ion-col>
     </ion-row>
   </!--ion-grid>
   <ion-list *ngIf="hours">

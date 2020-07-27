@@ -40,11 +40,6 @@ export class SelectBusinessComponent implements OnInit {
       this.outputService.emit(this.selectedBusiness.Services[0]);
     }
   }
-
-  emitService() {
-
-  }
-
   buttonClick(selectedService: any) {
     this.outputService.emit(selectedService);
   }
