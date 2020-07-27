@@ -7,6 +7,9 @@ import { IonicModule } from '@ionic/angular';
 import { MakeAppointmentPageRoutingModule } from './make-appointment-routing.module';
 
 import { MakeAppointmentPage } from './make-appointment.page';
+//mport { RouterModule } from '@angular/router';
+//import { SelectBusinessComponent } from '../select-business/select-business.component';
+
 
 @NgModule({
   imports: [
@@ -15,6 +18,10 @@ import { MakeAppointmentPage } from './make-appointment.page';
     IonicModule,
     MakeAppointmentPageRoutingModule
   ],
-  declarations: [MakeAppointmentPage,]
+    
+ 
+  declarations: [MakeAppointmentPage,
+    //SelectBusinessComponent
+  ]
 })
 export class MakeAppointmentPageModule {}

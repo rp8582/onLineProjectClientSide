@@ -4,7 +4,7 @@ import { TabsPage } from './tabs.page';
 import { ConfirmTurnComponent } from '../confirm-turn/confirm-turn.component';
 import { ImmediateTurnDetailsComponent } from '../immediate-turn-details/immediate-turn-details.component';
 import { NoTurnsComponent } from '../no-turns/no-turns.component';
-import {MakeAppointmentPage} from '../make-appointment/make-appointment.page';
+import { MakeAppointmentPage } from '../make-appointment/make-appointment.page';
 
 const routes: Routes = [
   {
@@ -18,7 +18,14 @@ const routes: Routes = [
             path: '',
             loadChildren: () =>
               import('../tab1/tab1.module').then(m => m.Tab1PageModule)
-          }
+          },
+          {
+            path: 'makeAppointment',
+            component: MakeAppointmentPage
+          },
+          { path: 'immediateTurn',
+           component: ImmediateTurnDetailsComponent },
+          
         ]
       },
       {
@@ -44,10 +51,17 @@ const routes: Routes = [
 
     ],
   },
-  { path: 'immediateTurn', component: ImmediateTurnDetailsComponent },
+  //{ path: 'immediateTurn', component: ImmediateTurnDetailsComponent },
   { path: 'confirmTurn', component: ConfirmTurnComponent },
-  { path: 'no-turns', component: NoTurnsComponent },
-  {path :'makeAppointment',component:MakeAppointmentPage},
+  { path: 'no-turns', component: NoTurnsComponent, 
+  children: [
+    {
+      path: 'makeAppointment',
+      component: MakeAppointmentPage
+    },
+  ]
+},
+  // {path :'makeAppointment',component:MakeAppointmentPage},
 
   {
     path: '',

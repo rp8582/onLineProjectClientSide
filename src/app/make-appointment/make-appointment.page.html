@@ -14,7 +14,7 @@
   <ion-list *ngIf="hours">
     <ion-item *ngFor="let hour of hours" button (click)="setHour(hour)"> {{hour}}</ion-item>
   </ion-list-->
-  <ion-segment *ngIf="selectedService&&days" (ionChange)="segmentChanged($event)">
+  <ion-segment *ngIf="selectedService&&days" scrollable (ionChange)="segmentChanged($event)">
     <ion-segment-button *ngFor="let day of days" value={{day}}>
       <ion-label>{{day|date:'shortDate'}}</ion-label>
     </ion-segment-button>

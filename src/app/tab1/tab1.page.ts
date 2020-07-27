@@ -12,10 +12,10 @@ export class Tab1Page {
   constructor(private router:Router) {}
   immediateTurn()
   {
-    this.router.navigate(['immediateTurn']);
+    this.router.navigate(['tabs/tab1/immediateTurn']);
   }
   MakeAppointment()
   {
-    this.router.navigate(['makeAppointment']);
+    this.router.navigate(['tabs/tab1/makeAppointment']);
   }
 }
