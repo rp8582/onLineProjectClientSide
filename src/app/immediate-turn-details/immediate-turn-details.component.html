@@ -5,7 +5,9 @@
         </ion-title>
     </ion-toolbar>
 </ion-header>
+
 <ion-content>
+
     <ion-row>
         <ion-col>
             <ion-button size="small" shape="round" (click)="loadBusinesses()">בחר עסק</ion-button>
@@ -14,11 +16,12 @@
             <ion-button size="small" shape="round" (click)="loadCategory()">תעזרו לי לבחור</ion-button>
         </ion-col>
     </ion-row>
+
     <app-select-business *ngIf="isCategory==0" (outputService)="setSelectedService($event)"></app-select-business>
     <app-select-category *ngIf="isCategory==1" (outputCategory)="setSelectedCategory($event)"></app-select-category>
+
     <ion-list>
         <ion-radio-group #mode value="false">
-
             <ion-item>
                 <ion-label>אני ברכב</ion-label>
                 <ion-radio slot="start" value="true"></ion-radio>
@@ -30,11 +33,11 @@
             </ion-item>
         </ion-radio-group>
     </ion-list>
-    <ion-row>
-        <ion-button *ngIf="selectedCategory" size="small" (click)="loadOptionalTurn(mode.value)">הבא
-        </ion-button>
-        <ion-button *ngIf="selectedService" size="small" (click)="loadTurnToBusiness(mode.value)">הבא
-        </ion-button>
 
+    <!--next button אולי אפשר לעשות את זה בצורה של קוד של הוספת האזנה לאירוע לפי התנאי ולא לכתוב פעמים אותו דבר-->
+    <ion-row>
+        <ion-button *ngIf="selectedCategory" size="small" (click)="loadOptionalTurn()">הבא</ion-button>
+        <ion-button *ngIf="selectedService" size="small" (click)="loadTurnToBusiness()">הבא</ion-button>
     </ion-row>
+
 </ion-content>

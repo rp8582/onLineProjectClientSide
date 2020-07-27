@@ -1,8 +1,0 @@
-<ion-content>
-  <ionic-selectable [(ngModel)]="selectedItem" [items]="data" itemValueField={{itemId}} itemTextField={{itemName}}
-    [canSearch]="true" (onChange)="dataChange($event)">
-  </ionic-selectable>
-  <ion-row>
-    <ion-button *ngIf="selectedItem" size="small" (click)="emitService()">הבא</ion-button>
-  </ion-row>
-</ion-content>

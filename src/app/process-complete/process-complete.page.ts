@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {OptionalTurn} from '../optional-turn.service';
+import { OptionalTurn } from '../optional-turn.service';
 import { BookAppointment } from '../bookAppointment.service';
 
 @Component({
@@ -8,15 +8,20 @@ import { BookAppointment } from '../bookAppointment.service';
   styleUrls: ['./process-complete.page.scss'],
 })
 export class ProcessCompletePage implements OnInit {
-  
-  verificationCode=this.optionalTurn.verificationCode;
-  
+  verificationCode: any;
+  turn: any;
 
-  constructor(private optionalTurn:OptionalTurn,private appointmemt:BookAppointment) { }
+  constructor(private optionalTurn: OptionalTurn, private appointmemt: BookAppointment) { }
 
   ngOnInit() {
-    if(this.verificationCode==null)
-    this.verificationCode=this.appointmemt.verificationCode;
+    if (this.optionalTurn.verificationCode == null) {
+      this.verificationCode = this.appointmemt.verificationCode;
+      this.turn = this.appointmemt.selectedTurn;
+    }
+    else {
+      this.verificationCode = this.optionalTurn.verificationCode;
+      this.turn = this.optionalTurn.selectedTurn;
+    }
   }
 
 }
