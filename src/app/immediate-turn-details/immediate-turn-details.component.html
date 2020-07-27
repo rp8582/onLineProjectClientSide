@@ -17,7 +17,7 @@
         </ion-col>
     </ion-row>
 
-    <app-select-business *ngIf="isCategory==0" (outputService)="setSelectedService($event)"></app-select-business>
+    <app-select-business [isAdvanceTurn]=0 *ngIf="isCategory==0" (outputService)="setSelectedService($event)"></app-select-business>
     <app-select-category *ngIf="isCategory==1" (outputCategory)="setSelectedCategory($event)"></app-select-category>
 
     <ion-list>

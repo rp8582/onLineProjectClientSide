@@ -6,7 +6,7 @@
 
 <ion-content>
   <!--step 1: choose business and service-->
-  <app-select-business (outputService)="SetSelectedService($event)"></app-select-business>
+  <app-select-business [isAdvanceTurn]=1 (outputService)="SetSelectedService($event)"></app-select-business>
 
   <!--step 2: choose date-->
   <ion-segment *ngIf="selectedService&&days&&!selectedDay" (ionChange)="segmentChanged($event)">
@@ -19,7 +19,7 @@
   <ion-item *ngIf="selectedDay">
     <ion-row>
       <ion-col>{{selectedDay}}</ion-col>
-      <ion-col (click)="cancelSelectDay()">Change Day</ion-col>
+      <ion-col (click)="cancelSelectDay()">בחר יום אחר</ion-col>
     </ion-row>
   </ion-item>
 
@@ -34,7 +34,7 @@
   <ion-item *ngIf="selectedHour">
     <ion-row>
       <ion-col>{{selectedHour}}</ion-col>
-      <ion-col (click)="cancelSelectHour()">Change Hour</ion-col>
+      <ion-col (click)="cancelSelectHour()">בחר שעה אחרת</ion-col>
     </ion-row>
   </ion-item>
 

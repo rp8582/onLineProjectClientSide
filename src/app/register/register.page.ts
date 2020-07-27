@@ -20,8 +20,6 @@ export class RegisterPage implements OnInit {
   }
 
   register() {
-    console.log(this.userName.nativeElement.value);
-    
     let name =this.userName.nativeElement.value;
     let phone=this.userPhone.nativeElement.value;
     console.log('name:',name,'  phone:',phone);

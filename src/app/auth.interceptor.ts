@@ -4,7 +4,6 @@ import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HTTP_INTERCEPTORS
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
 
-
     intercept(request: HttpRequest<any>, next: HttpHandler) {
         let token = localStorage.getItem("user");
         if (token) {

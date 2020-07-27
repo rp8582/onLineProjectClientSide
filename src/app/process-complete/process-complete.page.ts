@@ -22,6 +22,7 @@ export class ProcessCompletePage implements OnInit {
       this.verificationCode = this.optionalTurn.verificationCode;
       this.turn = this.optionalTurn.selectedTurn;
     }
+    console.log('turn',this.turn);
   }
 
 }
