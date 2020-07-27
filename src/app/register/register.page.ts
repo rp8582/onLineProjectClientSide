@@ -10,8 +10,8 @@ import { environment } from 'src/environments/environment';
 })
 export class RegisterPage implements OnInit {
 
-  @ViewChild('userName', { static: true }) userName: ElementRef;
-  @ViewChild('userPhone', { static: true }) userPhone: ElementRef;
+  @ViewChild('userName',{static:false, read: ElementRef }) userName: ElementRef;
+  @ViewChild('userPhone', { static: false , read: ElementRef}) userPhone: ElementRef;
   apiUri = '/register';
 
   constructor(private http: HttpClient, private router: Router) { }
@@ -20,10 +20,11 @@ export class RegisterPage implements OnInit {
   }
 
   register() {
-    let user = { "userName": this.userName.nativeElement, "phone": this.userPhone.nativeElement };
-    let name = user.userName;
-    let phone=user.phone;
-    console.log(user);
+    console.log(this.userName.nativeElement.value);
+    
+    let name =this.userName.nativeElement.value;
+    let phone=this.userPhone.nativeElement.value;
+    console.log('name:',name,'  phone:',phone);
     this.http.get(environment.apiUrl + this.apiUri, { params: {name,phone} })
       .subscribe((token: string) => {
         localStorage.setItem("user", token);

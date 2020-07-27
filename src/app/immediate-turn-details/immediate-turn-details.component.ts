@@ -13,12 +13,11 @@ import { OptionalTurn } from '../optional-turn.service';
 
 export class ImmediateTurnDetailsComponent {
  
-  @ViewChild('mode', { static: true }) mode: ElementRef;
   selectedCategory: any;
   selectedService: any;
   isCategory: any;
-  latitude: any;
-  longitude: any;
+  @ViewChild('mode',{static:false, read: ElementRef }) mode: ElementRef;
+
 
   constructor(private http: HttpClient, private optionalTurns: OptionalTurns, private optionalTurn: OptionalTurn, private router: Router) { }
 
@@ -54,6 +53,7 @@ export class ImmediateTurnDetailsComponent {
   }
 
   loadTurnToBusiness() {
+    console.log('mode:', this.mode.nativeElement.value);
     this.getUserLocation().then((position => {
       this.optionalTurn.loadOptionalTurn(this.selectedService.ServiceId, position.lat, position.lng, this.mode.nativeElement.value).subscribe(
         (turn => {
@@ -65,7 +65,7 @@ export class ImmediateTurnDetailsComponent {
 
 
   loadOptionalTurn() {
-    console.log('mode:', this.mode.nativeElement);
+    console.log('mode:', this.mode.nativeElement.value);
     this.getUserLocation().then((position => {
       this.optionalTurns.loadOptionalTurns(this.selectedCategory.CategoryId, position.lat, position.lng, this.mode.nativeElement.value).subscribe(
         (turns => {
