@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
@@ -9,6 +9,9 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
+
+  @ViewChild('userName',{static:false, read: ElementRef }) userName: ElementRef;
+  @ViewChild('userPhone', { static: false , read: ElementRef}) userPhone: ElementRef;
   apiUri = '/register';
 
   constructor(private http: HttpClient, private router: Router) { }
@@ -16,10 +19,13 @@ export class RegisterPage implements OnInit {
   ngOnInit() {
   }
 
-  register(name: string, phone: string) {
-    let user={"userName":name,"phone":phone};
-    console.log(user);
-    this.http.get(environment.apiUrl + this.apiUri, { params: { name, phone } })
+  register() {
+    console.log(this.userName.nativeElement.value);
+    
+    let name =this.userName.nativeElement.value;
+    let phone=this.userPhone.nativeElement.value;
+    console.log('name:',name,'  phone:',phone);
+    this.http.get(environment.apiUrl + this.apiUri, { params: {name,phone} })
       .subscribe((token: string) => {
         localStorage.setItem("user", token);
         console.log(token);

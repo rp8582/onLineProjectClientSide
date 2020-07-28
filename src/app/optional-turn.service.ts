@@ -13,6 +13,7 @@ export class OptionalTurn {
     apiUri = "/immediateTurns";
     optionalTurn: any;
     verificationCode:any;
+    selectedTurn:any;
     constructor(private http: HttpClient) { }
 
     loadOptionalTurn(serviceId, latitude, longitude, mode): Observable<any> {

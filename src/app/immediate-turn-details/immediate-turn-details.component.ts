@@ -1,8 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { IonicSelectableComponent } from 'ionic-selectable';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { environment } from '../../environments/environment';
 import { Observable, of } from 'rxjs';
 import { OptionalTurns } from '../optional-turns.service';
 import { OptionalTurn } from '../optional-turn.service';
@@ -14,13 +12,12 @@ import { OptionalTurn } from '../optional-turn.service';
 })
 
 export class ImmediateTurnDetailsComponent {
-
+ 
   selectedCategory: any;
   selectedService: any;
   isCategory: any;
-  latitude: any;
-  longitude: any;
-  //apiUri = '';
+  @ViewChild('mode',{static:false, read: ElementRef }) mode: ElementRef;
+
 
   constructor(private http: HttpClient, private optionalTurns: OptionalTurns, private optionalTurn: OptionalTurn, private router: Router) { }
 
@@ -51,14 +48,15 @@ export class ImmediateTurnDetailsComponent {
       },
         err => {
           reject(err);
-          
+          console.log(err);
         });
     });
   }
 
-  loadTurnToBusiness(mode: any) {
+  loadTurnToBusiness() {
+    console.log('mode:', this.mode.nativeElement.value);
     this.getUserLocation().then((position => {
-      this.optionalTurn.loadOptionalTurn(this.selectedService.ServiceId, position.lat, position.lng, mode).subscribe(
+      this.optionalTurn.loadOptionalTurn(this.selectedService.ServiceId, position.lat, position.lng, this.mode.nativeElement.value).subscribe(
         (turn => {
           this.optionalTurn.optionalTurn = turn;
           this.router.navigate(['/confirmTurn']);
@@ -70,9 +68,10 @@ export class ImmediateTurnDetailsComponent {
   }
 
 
-  loadOptionalTurn(mode) {
+  loadOptionalTurn() {
+    console.log('mode:', this.mode.nativeElement.value);
     this.getUserLocation().then((position => {
-      this.optionalTurns.loadOptionalTurns(this.selectedCategory.CategoryId, position.lat, position.lng, mode).subscribe(
+      this.optionalTurns.loadOptionalTurns(this.selectedCategory.CategoryId, position.lat, position.lng, this.mode.nativeElement.value).subscribe(
         (turns => {
           this.optionalTurns.optionalTurns = turns;
           this.router.navigate(['/confirmTurn']);

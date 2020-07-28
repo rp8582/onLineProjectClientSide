@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./make-appointment.page.scss'],
 })
 export class MakeAppointmentPage implements OnInit {
+  
   selectedService: any;
   days: any[];
   hours: any[];
@@ -26,6 +27,7 @@ export class MakeAppointmentPage implements OnInit {
   }
   // http://localhost:52764/appointment/optionalDays?serviceId=1
   // http://localhost:52764/appointment/optionalHours?serviceId=1&day=3
+ 
   loadDays() {
     this.appointmentService.loadDays(this.selectedService.ServiceId).subscribe((days => {
       this.days = days
@@ -37,8 +39,12 @@ export class MakeAppointmentPage implements OnInit {
     this.selectedHour = hour;
   }
 
+  cancelSelectHour(){
+    this.selectedHour = null;
+  }
+
   confirmTurn() {
-    var date: Date;
+    let date: Date;
     date = new Date(this.selectedDay+" "+this.selectedHour);
     console.log("date",date);
     
@@ -52,16 +58,19 @@ export class MakeAppointmentPage implements OnInit {
       }))
     
   }
+  
   segmentChanged(ev: any) {
-    //console.log('Segment1', ev.detial.value);
-    var day= ev.detail.value;
+    let day= ev.detail.value;
     console.log('Segment2',day);
     this.selectedDay = day.split("T")[0];
     this.appointmentService.loadHoursPerDay(this.selectedService.ServiceId, this.selectedDay).subscribe((hours => {
       console.log(hours);
       this.hours = hours;
     }))
-    
+  }
+
+  cancelSelectDay(){
+    this.selectedDay=null;
   }
   
 }

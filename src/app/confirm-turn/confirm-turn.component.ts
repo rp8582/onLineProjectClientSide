@@ -31,14 +31,13 @@ export class ConfirmTurnComponent implements OnInit {
   }
 
   confirmTurn(turn: any) {
-
     console.log("turn:" + turn);
-    this.http.post(environment.apiUrl + this.apiUri, { TurnId: turn.TurnId, PreAlert: this.preAlert })
+    this.http.put(environment.apiUrl + this.apiUri, { TurnId: turn.TurnId, PreAlert: this.preAlert })
       .subscribe((verificationCode => {
         this.router.navigate(['/process-complete']);
         console.log(verificationCode);
         this.optionalTurn.verificationCode = verificationCode;
+        this.optionalTurn.selectedTurn=turn;
       }))
   }
-
 }
