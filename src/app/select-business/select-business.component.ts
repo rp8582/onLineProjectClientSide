@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { IonicSelectableComponent } from 'ionic-selectable';
@@ -12,6 +12,7 @@ import { IonicSelectableComponent } from 'ionic-selectable';
 
 export class SelectBusinessComponent implements OnInit {
 
+  @Input() isAdvanceTurn: any;
   @Output() outputService = new EventEmitter<any>();
   Businesses: any[];
   selectedBusiness: any;
@@ -27,8 +28,9 @@ export class SelectBusinessComponent implements OnInit {
     this.http.get(environment.apiUrl + this.apiUri).subscribe((businesses: any[]) => {
       this.Businesses = businesses;
       console.log('businesses', this.Businesses);
-
     });
+    if (this.isAdvanceTurn == 1)
+      this.Businesses = this.Businesses.filter(b => b.Services.KindOfPermission == 1);
   }
 
   dataChange(event: {

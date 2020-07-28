@@ -22,7 +22,7 @@ export class MakeAppointmentPage implements OnInit {
 
   SetSelectedService(service: any) {
     this.selectedService = service;
-    console.log(this.selectedService);
+    console.log('selectedService:',this.selectedService);
     this.loadDays();
   }
   // http://localhost:52764/appointment/optionalDays?serviceId=1
@@ -31,7 +31,7 @@ export class MakeAppointmentPage implements OnInit {
   loadDays() {
     this.appointmentService.loadDays(this.selectedService.ServiceId).subscribe((days => {
       this.days = days
-      console.log(days);
+      console.log('days:',days);
     }));
   }
  
@@ -46,7 +46,7 @@ export class MakeAppointmentPage implements OnInit {
   confirmTurn() {
     let date: Date;
     date = new Date(this.selectedDay+" "+this.selectedHour);
-    console.log("date",date);
+    console.log("date:",date);
     
     this.appointmentService.makeAppointment
     ({ PreAlert: this.preAlert, ServiceId: this.selectedService.ServiceId, EstimatedHour:this.selectedDay+" "+this.selectedHour})
@@ -64,7 +64,7 @@ export class MakeAppointmentPage implements OnInit {
     console.log('Segment2',day);
     this.selectedDay = day.split("T")[0];
     this.appointmentService.loadHoursPerDay(this.selectedService.ServiceId, this.selectedDay).subscribe((hours => {
-      console.log(hours);
+      console.log('hours:',hours);
       this.hours = hours;
     }))
   }
