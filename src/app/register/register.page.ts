@@ -12,7 +12,7 @@ export class RegisterPage implements OnInit {
 
   @ViewChild('userName',{static:false, read: ElementRef }) userName: ElementRef;
   @ViewChild('userPhone', { static: false , read: ElementRef}) userPhone: ElementRef;
-  apiUri = '/register';
+  apiUri = '/users';
 
   constructor(private http: HttpClient, private router: Router) { }
 

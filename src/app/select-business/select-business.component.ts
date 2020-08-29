@@ -28,9 +28,10 @@ export class SelectBusinessComponent implements OnInit {
     this.http.get(environment.apiUrl + this.apiUri).subscribe((businesses: any[]) => {
       this.Businesses = businesses;
       console.log('businesses', this.Businesses);
+      if (this.isAdvanceTurn == 1)
+      this.Businesses = this.Businesses.filter(b => b.Services.find(s=>s.KindOfPermission == true));
     });
-    if (this.isAdvanceTurn == 1)
-      this.Businesses = this.Businesses.filter(b => b.Services.KindOfPermission == 1);
+    
   }
 
   dataChange(event: {

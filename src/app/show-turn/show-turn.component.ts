@@ -10,7 +10,7 @@ import { debug } from 'util';
 })
 export class ShowTurnComponent implements OnInit {
   myTurns: any[]
-  apiUri = '/CustInTurn'
+  apiUri = '/CustomersInTurn'
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
